@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Invoice</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="shortcut icon" type="image/x-icon" href="img/dollarSign.ico" />
+	<link href='https://fonts.googleapis.com/css?family=Fredoka+One%7CRoboto:300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/myResets.css">
+	<link rel="stylesheet" href="css/components.css">
+	<link rel="stylesheet" href="css/invoicer.css">
+	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="css/print.css">
+</head>
+<body>
+	<header>
+		<div class="headerInnerWrap">
+			<svg class="siteMapSVG" id="treehouseIconXML" data-name="Layer 20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70.6 76.49">
+				<title>treehouseIconXML</title>
+				<path class="siteMapSvgPath" d="M61,15c-2.41-1.4-6.33.78-8.69,4.93l-4.26,7.4a9.34,9.34,0,0,0,.67,9.64l0.17,0.17a58.16,58.16,0,0,0,5.49,6.39,4.86,4.86,0,0,1,1.12,2A4.83,4.83,0,1,1,46.23,48a5.74,5.74,0,0,1-.17-1.91,5.74,5.74,0,0,0-1.74-4.48c-1.51-1.68-4.65,1.57-5.66,4.82l-0.06.17c-1,3.31-1.63,6.17-1.46,6.45a1.55,1.55,0,0,1,.28.5,5.53,5.53,0,0,1-2.19,7.51,5.48,5.48,0,0,1-5.1-9.7,1.19,1.19,0,0,1,.39-0.17,8.69,8.69,0,0,0,1.23-3.14c0.5-1.63.9-3,.9-3a1.34,1.34,0,0,1,.17-0.5l2.69-9.64-2.86,5.94c-0.39-1.12-.9-1.18-2.13-0.28-0.73.5-2,1.63-2.58,2a9.67,9.67,0,0,0-2.58,3.36,5.45,5.45,0,0,1-1.23,1.57A4.82,4.82,0,1,1,18.09,40a4.91,4.91,0,0,1,2-1c1.23-.28,5.38-2.8,7.85-4.54a6.05,6.05,0,0,0,1.12-.9l6.61-5-5.77,3.14a8.72,8.72,0,0,0-1.35,0c-2.13.22-4.32,0.5-4.71,1a3.11,3.11,0,0,1-.9.78,4.29,4.29,0,0,1-5-7,4.41,4.41,0,0,1,2.63-.78c1.57,0.06,5.66.9,9,.28l0.9-.17a14.37,14.37,0,0,0,9.08-6.61S41.13,16.41,43,13s1.85-7.17-.28-8.46L38.89,2.34a8,8,0,0,0-7.12,0L5,17.42A7.92,7.92,0,0,0,1.5,23.53V53A7.83,7.83,0,0,0,5,59.07L31.77,74.14a8,8,0,0,0,7.12,0L65.57,59.07A7.69,7.69,0,0,0,69.1,53V23.53a7.83,7.83,0,0,0-3.53-6.11A36,36,0,0,1,61,15Z" style="fill: none;stroke: rgb(255,255,255);stroke-miterlimit: 10;stroke-width: 5pxstroke-linecap: round;stroke-linejoin: round;"/>
+			</svg>
+			<h1>Treehouse Invoice 2.0</h1>
+			<a href="frontSheet.html">Load Front Sheet</a>
+		</div>
+	</header>
+	<div class="primeWrap">
+	
+	
+		<div class="mainInfoWrap">
+			<div class="infoWrap personalInfoWrap">
+
+				<label class="infoTitle" for="name">Name:</label>
+				<input type="text" name="name" id="name" class="yourInfoInput" autocomplete="on"><br>
+				
+				<label class="infoTitle" for="address">Address:</label>
+				<input type="text" name="address" id="address" class="yourInfoInput" autocomplete="on"><br>
+				
+				<!-- <label class="infoTitle" for="citySateZip">City, State, Zip:</label>
+				<input type="text" name="name" id="address" class="yourInfoInput" autocomplete="on"><br> -->
+				
+				<label class="infoTitle" for="phone">Phone:</label>
+				<input type="text" name="phone" id="phone" class="yourInfoInput" autocomplete="on"><br>
+				
+				<label class="infoTitle" for="email">Email:</label>
+				<input type="text" name="email" id="email" class="yourInfoInput" autocomplete="on"><br>			
+			</div>
+			<div class="infoWrap billInfoWrap">
+			
+				<label class="infoTitle" for="invoiceNumber">Invoice #: <!-- <span class="symbol hashtag">#</span> --></label>
+				<input type="text" name="invoiceNumber" id="invoiceNumber" class="yourInfoInput" autocomplete="off"><br>
+			
+				<label class="infoTitle" for="period">Date<span class="parens">(</span>s<span class="parens">)</span>:</label>
+				<input type="text" name="period" id="period" class="yourInfoInput" autocomplete="off"><br>
+				
+				<label class="infoTitle" for="baseRate" >Base Rate: <span class="symbol dollar">$</span></label>
+				<input type="text" name="baseRate" id="baseRate" class="yourInfoInput" autocomplete="on"><br>
+				
+				<!-- <label class="infoTitle" for="hours">Total Time:</label>
+				<input type="text" name="hours" id="hours" class="yourInfoInput" autocomplete="off"><br>
+				
+				<label class="infoTitle" for="due">Total Due:</label>
+				<input type="text" name="due" id="due" class="yourInfoInput" autocomplete="off"><br>	 -->
+				<p class="dueDate">Please forward each invoice on the 15 of every month for approval</p>
+			</div>
+		</div>
+		
+		<div class="mainInfoWrap">
+			<div class="infoWrap personalInfoWrap">
+				<label class="infoTitle toAndFor" for="to">To:</label>
+				<textarea name="to" id="to" class="yourInfoInput toAndForInput" autocomplete="on" placeHolder="Nancy King:          nancy.king@teamtreehouse.com"></textarea> <br>		
+			</div>
+			<div class="infoWrap billInfoWrap">
+				<label class="infoTitle toAndFor" for="for">For:</label>
+				<textarea name="for" id="for" class="yourInfoInput toAndForInput" autocomplete="off" placeHolder="Techdegree Services"></textarea> <br>
+			</div>
+		</div>
+	
+	
+		<div class="buttonWrap">
+			<button class="newRow invoButton" id="newRow">Create Rows &#10095;</button>
+			<input type="text" name="rows" id="rows" class="rowsInput" placeholder="Row #" autocomplete="off">
+			<button class="clearAll invoButton" id="clearAll">Clear All</button>
+		</div>
+		
+		<div class="warningWrap" id="warningWrap">
+			<div class="warning" id="warning">
+				<h1 class="stop">STOP!</h1>
+				<p>Are you sure want to clear everything?</p><br>
+				<p>Clicking "Clear" will reset this document to its orignal state<br>and erase all the data you've entered here.</p><br>
+				<button class="warningButton trueClear" id="trueClear">Clear</button>
+				<button class="warningButton closeWarning" id="closeWarnng">Close</button>
+			</div>
+		</div>
+		
+		
+		<table>
+			<thead>
+				<tr>
+					<th class="itemDateHeader">DATE</th>
+					<th class="itemServiceTypeHeader">SERVICE TYPE</th>
+					<th>DESCRIPTION <span class="parens">(</span>Project or Student<span class="parens">)</span></th>
+					<th class="itemAmountHeaders">MINUTES</th>
+					<th class="itemAmountHeaders"><span class="symbol times">&times;</span> RATE <span class="symbol equals">&equals;</span></th>
+					<th class="itemAmountHeaders">AMOUNT</th>
+				</tr>
+			</thead>
+			
+			<tbody id="invoiceBody">
+				<!-- THIS IS WAHT THE GENERATED TABLE ROWS WOULD LOOK LIKE AS MARKUP, EXCEPT THE IDS GET MODIFIED TO INCLUDE A TRAILING NUMBER THAT MATCHES THIER PARENT'S PARENT'S INDEX NUMBER -->
+				
+				<!-- <tr class="invoiceRow">
+					<td><input type="text" name="itemDate" id="itemDate" class="invoiceInput" autocomplete="off"></td>
+					<td><input type="text" name="itemServiceType" id="itemServiceType" class="invoiceInput itemServiceType" autocomplete="on"></td>
+					<td><textarea name="itemDescription" id="itemDescription" class="invoiceInput itemDescription" autocomplete="off"></textarea></td>
+					<td><input type="text" name="itemMinutes" id="itemMinutes" class="invoiceInput itemMinutes" autocomplete="off"></td>
+					<td><input type="text" name="itemRate" id="itemRate" class="invoiceInput itemRate" autocomplete="off"></td>
+					<td><input type="text" name="itemAmount" id="itemAmount" class="invoiceInput itemAmount" autocomplete="off"></td>
+				</tr> -->
+			</tbody>
+			
+		</table>
+		
+		
+		<button class="oneMore invoButton" id="oneMore">One More Row</button>
+		
+		<table class="totalNotesTable">
+			<caption></caption>
+			<thead>
+				<tr>
+					<th>Notes</th>
+					<th class="totals">Total Time</th>
+					<th class="totals">Total Amount</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<textarea id="notes" class="invoiceInput2 invoiceNotes"></textarea> 
+					</td>
+					<td><input type="text" name="totalTime" id="totalTime" class="invoiceInput2"></td>
+					<td><input type="text" name="totalAmount" id="totalAmount" class="invoiceInput2"></td>
+				</tr>
+			</tbody>
+		</table>
+	
+	
+		<div class="instructionsModal">
+			<h2>Here's what you want to do</h2>
+			
+			<ol>
+				<li>Fill out upper form as best as you can<br> <span>NOTE</span>: you must at least enter your hourly rate if you want your totals to update automatically</li>
+				<li>Consider the number of rows you need and enter that number in the input that looks like this:<img src="img/rowInput.jpg" alt="Image of Row Input Field" class="block"></li>
+				<li>Click <img src="img/createRows.jpg" alt="Image of Create Rows button" class="exampleButtons "> or just hit enter on your keyboard</li>
+				<li>Fill out Invoice table cells</li>
+				<li>Enter your total billable minutes for each invoiced item in the <img src="img/minutes.jpg" alt="Image of Billable Minutes column header" class="exampleButtons "> column, this is what updates your totals</li>
+				<li>The cells in the rate column of the individual invoice items can be customized for specialty items, and totals will update accordingly.</li>
+				<li>Data is saved with local storage and will persist until you click <img src="img/clearAll.jpg" alt="Image ofClear All button" class="exampleButtons "><br> <span>NOTE</span>: resetting or reinstalling your browser will empty local storage and clear your data</li>
+				<li>If you need more rows, click <img src="img/oneMore.jpg" alt="Image of One More Row button" class="exampleButtons "></li>
+				<li>Fill out Front Sheet, print form and save a screenshot before clearing data</li>
+				<li>Click <img src="img/loadFrontSheet.jpg" alt="Image ofLoad Front Sheet button" class="exampleButtons "> to fill out Front Sheet page</li>
+			</ol>
+			
+			<p><span>NOTE</span>: if program quits updating your totals, try refreshing the page or clicking <img src="img/oneMore.jpg" alt="Image of One More Row button" class="exampleButtons "></p>
+			<br>
+			<p class="calcs">Amount = billable minutes * rate / 60, rounded to nearest 100th</p>
+			<p class="calcs">Total Amount = sum of Amount cells</p>
+			<p class="calcs">Total Time = billable mintes / 60, rounded to the nearest 100th</p>
+			<button class="instructionClose" id="instructionClose">Close</button>
+		</div>
+	</div>
+	<footer>
+		<div class="footerInnerWrap">
+			<h2 id="instructions">Click to view instructions</h2>
+			<p class="cr">Designed and developed by Robert Manolis - Milwaukie, OR - March 2016</p>
+		</div>
+	</footer>
+	<!-- <script src="js/invoice.js"></script> -->
+	<script src="js/invoicer.js"></script>
+</body>
+</html>

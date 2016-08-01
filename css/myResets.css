@@ -1,0 +1,89 @@
+/*********************************************************
+ MY GENERAL RESETS
+**********************************************************/
+* {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+}
+
+body {
+	font-family: 'Lato', sans-serif;
+	font-size: 1em;
+	position: relative;
+	color: rgba(50,50,50,.9);
+	background: rgb(245,245,245);
+}
+
+html, body, header, section, footer, div,
+h1, h2, h3, h4, h5, h6, p, span, button, a,
+form, q, cite, code, img {
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, button, input {
+	font-family: 'Cinzel', serif;
+}
+
+a {
+	text-decoration: none;
+	outline: none;
+	-webkit-transition: .5s ease;transition: .5s ease;
+}
+
+button {
+	font-family: 'Roboto', sans-serif;
+	color: rgba(50,50,50,0.7);
+	font-size: 1em;
+	font-weight: bold;
+	padding: 5px 20px 7px;
+	background: rgba(245,245,245,0.9);
+	border-radius: 2px;
+	border: none;
+	border-top: 1px solid rgba(245,245,245,0.7);
+	border-bottom: 1px solid rgba(0,0,0,0.3);
+	box-shadow: 0px 1px 2px rgba(50,50,50,0.5);
+	opacity:.9;
+	cursor: pointer;
+	-webkit-transition: .5s ease-out;transition: .5s ease-out;
+}
+
+button:active, button:active, button:hover {
+	color: rgba(50,50,50,0.9);
+}
+
+button:active {
+	box-shadow: none;
+}
+
+button:focus {
+	box-shadow: 0px 3px 3px rgba(50,50,50,0.5);
+}
+
+button:hover {
+	box-shadow: 8px 8px 5px rgba(50,50,50,0.5);
+}
+
+button:disabled {
+	box-shadow: none;
+	opacity: .5;
+}
+
+label {
+	color: rgba(50,50,50,0.75);
+	border-radius: 3px;
+}
+
+hr {
+	margin: 25px auto 35px;
+	border-radius: 50%;
+	opacity: 0.7;
+}
+/*** END GENERAL ****************************************/

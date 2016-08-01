@@ -1,0 +1,167 @@
+
+
+
+body {
+	text-align: center;
+	padding-bottom: 150px;
+}
+
+.primeWrap {
+	position: relative;
+	width: 100%;
+	min-height: 100%;
+	max-width: 900px;
+	margin: auto;
+}
+
+
+
+
+/* YOUR INFO *****************************************************/
+.mainInfoWrap {
+	width: 100%;
+	margin: 15px auto;
+	padding-left: 10px;
+	padding-right: 10px;
+	background: rgb(250, 250, 250);
+	clear: both;
+}
+
+
+.infoWrap {
+	display: inline-block;
+	vertical-align: top;
+	text-align: left;
+	width: 100%;
+	min-width: 325px;
+	max-width: 435px;
+	margin: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: 1px solid rgba(50,50,50,0.2);
+	border-left: none;
+}
+
+
+.infoTitle {
+	display: inline-block;
+	font-family: 'Fredoka One', cursive;
+	font-size: .88em;
+	color: rgb(76, 175, 80);
+	width: 85px;
+	margin: 5px auto;
+}
+
+.toAndFor {
+	vertical-align: top;
+}
+
+/* #rateLabel {
+	font-size: .88em;
+} */
+
+.yourInfoInput {
+	display: inline-block;
+	font-family: 'Roboto', sans-serif;
+	width: calc(100% - 100px);
+	margin: 5px auto 5px 5px;
+	padding-left: 5px;
+	border-radius: 3px;
+	border: 1px solid rgba(50,50,50,0.2);
+}
+
+.toAndForInput {
+	height: 50px;
+}
+
+.symbol {
+	font-size: 1.25em;
+}
+
+.parens {
+	font-family: "Times New Roman", Times, serif;
+}
+
+.dueDate {
+	font-size: .7333em;
+	font-weight: bold;
+	color: rgb(76, 175, 80);
+	margin-top: 7px;
+	opacity: .7;
+}
+
+
+
+/* TABLE ************************************************/
+table {
+	width: 100%;
+	max-width: 885px;
+	margin: 10px auto;
+	border: solid thin; 
+	border-collapse: collapse; 
+}
+
+th, tr {
+	padding: 5px;
+	border: solid thin;
+	border-color: rgba(50,50,50,0.2);
+}
+
+th {
+	font-family: 'Fredoka One', cursive;
+	vertical-align: middle; 
+	text-align: center;
+	font-size: 0.9em;
+	background: rgba(75,175,80,0.2);
+}
+
+.itemDateHeader {
+	width: 90px;
+}
+
+.itemAmountHeaders {
+	background: rgba(62,39,35,0.5);
+	width: 100px;
+}
+
+td {
+	font-family: 'Roboto', sans-serif;
+	white-space: nowrap;
+	vertical-align: top;
+	height: 30px;
+	padding: 5px;
+	border: solid thin;
+	border-color: rgba(50,50,50,0.2);
+}
+
+.invoiceInput,
+.invoiceInput2 {
+	display: inline-block;
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+	width: 100%;
+	border: none;
+}
+
+.itemDescription {
+	height: 20px;
+}
+
+.times {
+	margin-right: 10px;
+}
+
+.equals {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 10px;
+	/* margin-top: -10px !important; */
+}
+
+.invoiceNotes {
+	min-height: 100px;
+}
+
+
+
+

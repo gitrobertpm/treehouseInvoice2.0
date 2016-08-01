@@ -1,0 +1,66 @@
+@media print {
+	body {
+		margin-top: 0px;
+	}
+	
+	button, .dueDate, .buttonWrap, .invoicePrintHide, footer {
+		display: none;
+	}
+	
+	header {
+		box-shadow: none;
+	}
+	
+	header svg {
+		display: inline-block;
+		float: left;
+		margin-top: 0px;
+	}
+	
+	.siteMapSvgPath {
+		stroke: rgb(76,175,80) !important;
+	}
+	
+	header h1 {
+		text-align: left;
+		font-size: 1.75em;
+		color: rgb(76,175,80);
+		margin-bottom: 0px;
+	}
+	
+	header a {
+		display: none;
+	}
+	
+	.mainInfoWrap {
+		margin: 5px auto;
+		text-align: left;
+		float: left;
+		border: none;
+	}
+	
+	.infoWrap {
+		display: inline-block;
+		vertical-align: top;
+		text-align: left;
+		width: calc(50% - 3px);
+		border: none;
+	}
+	
+	.personalInfoWrap .infoTitle {
+		width: 60px;
+	}
+	
+	.personalInfoWrap .yourInfoInput {
+		width: calc(100% -10px);
+	}
+	
+	#address {
+		font-size: .88em;
+	}
+	
+	.yourInfoInput {
+		border: none;
+	}
+	
+}

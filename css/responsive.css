@@ -1,0 +1,116 @@
+@media screen and (min-width: 750px) {
+	.headerInnerWrap {
+		text-align: left;
+	}
+	
+	header svg {
+		display: inline-block;
+		width: 50px;
+		height: 50px;
+		margin: 10px auto -10px;
+	}
+	
+	header h1 {
+		display: inline-block;
+		font-size: 2.25em;
+		text-align: left;
+	}
+	
+	header a {
+		margin-top: 20px;
+		float: right;
+	}
+	
+	.mainInfoWrap {
+		border: 1px solid rgba(150,150,150,0.2);
+		box-shadow: 5px 5px 5px rgba(50,50,50,0.3);
+	}
+	
+	table {
+		box-shadow: 5px 5px 5px rgba(50,50,50,0.3);
+	}
+	
+	th {
+		min-width: 75px;
+		white-space: nowrap;
+	}
+	
+	.infoWrap {
+		width: calc(50% - 5px);
+		border: none;
+	}
+	
+	.billInfoWrap {
+		width: calc(50% - 50px);
+		margin-left: 30px;
+	}
+	
+	.infoTitle {
+		font-size: 1em;
+		margin: 5px auto;
+	}
+	
+	.personalInfoWrap .infoTitle {
+		width: 75px;
+	}
+
+	.billInfoWrap .infoTitle {
+		width: 95px;
+	}
+	
+	/* #rateLabel {
+		font-size: .95em;
+	} */
+	
+	.personalInfoWrap .yourInfoInput {
+		width: calc(100% - 100px);
+		margin-right: 5px;
+	}
+
+	.billInfoWrap .yourInfoInput {
+		width: calc(100% - 110px);
+		margin-right: 5px;
+	}
+	
+	.itemServiceTypeHeader {
+		width: 150px;
+	}
+	
+	.newRow {
+		font-size: 1em;
+		width: 140px;
+	}
+	
+	.rowsInput {
+		width: 80px;
+		margin-left: 15px;
+	}
+
+	.clearAll {
+		font-size: 1em;
+		width: 100px;
+	}
+	
+	.invoButton {
+		box-shadow: 5px 5px 5px rgba(50,50,50,0.3);
+	}
+	
+	.totals {
+		width: 150px;
+	}
+	
+	.instructionsModal li,
+	.instructionsModal p,
+	footer p {
+		font-size: 1em;
+	}
+	
+	.calcs {
+		font-size: .88em !important;
+		text-align: center !important;
+	}
+	
+	.cr {
+		text-align: center;
+	}
+}
