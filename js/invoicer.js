@@ -136,12 +136,19 @@ var figureItemAmount = function(el) {
 	el.addEventListener("input", function (){
 
 		var amownt = this.value * (itemRate[this.getAttribute("id")[11]].value / 60);
-		
+		console.log(this.parentNode.parentNode.marker);
 		// ROUND TOTAL DUE
 		var roundTotal = round(amownt, -1);
-		itemAmount[this.getAttribute("id")[11]].value = roundTotal;
-		itemAmount[this.getAttribute("id")[11]].blur = true;
-		localStorage.setItem(itemAmount[this.getAttribute("id")[11]].getAttribute("id"), itemAmount[this.getAttribute("id")[11]].value);
+		if (this.parentNode.parentNode.marker < 10) {
+			itemAmount[this.getAttribute("id")[11]].value = roundTotal;
+			itemAmount[this.getAttribute("id")[11]].blur = true;
+			localStorage.setItem(itemAmount[this.getAttribute("id")[11]].getAttribute("id"), itemAmount[this.getAttribute("id")[11]].value);
+		} else {
+			itemAmount[this.getAttribute("id")[11] + this.getAttribute("id")[12]].value = roundTotal;
+			itemAmount[this.getAttribute("id")[11] + this.getAttribute("id")[12]].blur = true;
+			localStorage.setItem(itemAmount[this.getAttribute("id")[11] + this.getAttribute("id")[12]].getAttribute("id"), itemAmount[this.getAttribute("id")[11] + this.getAttribute("id")[12]].value);
+		}
+		
 	});
 };
 
@@ -152,10 +159,16 @@ var figureItemAmountForRate = function(el) {
 		
 		// ROUND TOTAL DUE
 		var roundTotal = round(amownt, -1);
-		itemAmount[this.getAttribute("id")[8]].value = roundTotal;
-		itemAmount[this.getAttribute("id")[8]].blur = true;
-		localStorage.setItem(itemAmount[this.getAttribute("id")[8]].getAttribute("id"), itemAmount[this.getAttribute("id")[8]].value);
-		
+		if (this.parentNode.parentNode.marker < 10) {
+			itemAmount[this.getAttribute("id")[8]].value = roundTotal;
+			itemAmount[this.getAttribute("id")[8]].blur = true;
+			localStorage.setItem(itemAmount[this.getAttribute("id")[8]].getAttribute("id"), itemAmount[this.getAttribute("id")[8]].value);
+		} else {
+			itemAmount[this.getAttribute("id")[8] + this.getAttribute("id")[9]].value = roundTotal;
+			itemAmount[this.getAttribute("id")[8] + this.getAttribute("id")[9]].blur = true;
+			localStorage.setItem(itemAmount[this.getAttribute("id")[8] + this.getAttribute("id")[9]].getAttribute("id"), itemAmount[this.getAttribute("id")[8] + this.getAttribute("id")[9]].value);
+		}
+			
 		calkulator();
 	});
 };
@@ -481,20 +494,25 @@ newRow.addEventListener("click", function() {
 
 
 oneMore.onclick = function() {
-	makeRows();
-	oneRowId();
-	setFromLocal(invoiceInput);
-	calkulator();
-	
-	var oldRows = Number(localStorage.getItem("rowNumber"));
-	var newRows = oldRows += 1;
-	
-	// UPDATE NUMBER IN ROWS INPUT BOX TO REPRESENT ACTUAL NUMBER OF ROWS
-	rows.value = newRows;
-	
-	if(typeof(Storage) !== "undefined") {
-		localStorage.setItem("rowNumber", newRows);
+	if (invoiceRow.length < 100) {
+		makeRows();
+		oneRowId();
+		setFromLocal(invoiceInput);
+		calkulator();
+		
+		var oldRows = Number(localStorage.getItem("rowNumber"));
+		var newRows = oldRows += 1;
+		
+		// UPDATE NUMBER IN ROWS INPUT BOX TO REPRESENT ACTUAL NUMBER OF ROWS
+		rows.value = newRows;
+		
+		if(typeof(Storage) !== "undefined") {
+			localStorage.setItem("rowNumber", newRows);
+		}
+	} else {
+		alert("Too many rows.  Please ave your data and start a new invoice.");
 	}
+	
 };
 
 
