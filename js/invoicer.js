@@ -9,10 +9,12 @@
 
 
 var baseRate = document.getElementById("baseRate");
+var name = document.getElementById("name");
+var invoiceNumber = document.getElementById("invoiceNumber");
 var totalTime = document.getElementById("totalTime");
 var totalAmount = document.getElementById("totalAmount");
-var yourInfoInput = document.getElementsByClassName("yourInfoInput");
 var invoiceBody = document.getElementById("invoiceBody");
+var yourInfoInput = document.getElementsByClassName("yourInfoInput");
 var invoiceRow = document.getElementsByClassName("invoiceRow");
 var invoiceInput = document.getElementsByClassName("invoiceInput");
 var invoiceInput2 = document.getElementsByClassName("invoiceInput2");
@@ -33,7 +35,14 @@ var instructions = document.getElementById("instructions");
 var instructionsModal = document.getElementsByClassName("instructionsModal")[0];
 var instructionClose = document.getElementById("instructionClose");
 
+var csv = document.getElementById("csv");
+
 var noLoSto = "Oops, your browser doesn't seem to have local staorage.  This app saves form data in local storage.  Try updating your browser.";
+var baseRateWarning = "This input takes dollars per hour in positive numerical values.  Example: 3 or 42 or 420 or 3.14 ";
+var baserRateReminder = "This App can't do any calculations until you enter your hourly rate above.  Just numerical digits please.  Example: 3 or 42 or 420 or 3.14";
+var minuteWarning = "This input takes minutes in positive numerical values.  Example: 3 or 42 or 420 or 3.14 ";
+var loStoReminder = "This invoice uses local storage to save your entires into this form until you hit clear.  You don't seem to have local storage, so some aspects of this App my not function properly and your data will not be saved.";
+var rowInputReminder = "Please replace the '#' with a number between 1 and 42, then try again.";
 
 var runningCount = 0;
 var runningTime = 0;
@@ -42,6 +51,47 @@ totalTime.disabled = true;
 totalAmount.disabled = true;
 
 oneMore.disabled = true;
+
+
+/* DOWNlOAD CSV */
+csv.addEventListener("click", function() {
+	
+	var csvRows = [];
+
+	for(var i=0, l=yourInfoInput.length - 2; i<l; ++i){
+		csvRows.push(yourInfoInput[i].getAttribute("name") + ": " + yourInfoInput[i].value);
+	}
+	
+	csvRows.push(" ");
+
+	for(var j=0, m=invoiceInput.length; j<m; ++j){
+		csvRows.push(invoiceInput[j].getAttribute("name") + ": " + invoiceInput[j].value);
+		if ((j + 1) % 6 === 0) {
+			csvRows.push(" ");
+		}
+	}
+	
+	csvRows.push(" ");
+
+	for(var k=0, n=invoiceInput2.length; k<n; ++k){
+		if (invoiceInput2[k].getAttribute("id") === "totalTime") {
+		    csvRows.push(invoiceInput2[k].value.slice(0, 4) + " " + invoiceInput2[k].value.slice(5));
+		} else if (invoiceInput2[k].getAttribute("id") === "totalAmount") {
+		    csvRows.push(invoiceInput2[k].value.slice(0, 1) + invoiceInput2[k].value.slice(2));
+		} else {
+		    csvRows.push(invoiceInput2[k].value);
+		    csvRows.push(" ");
+		}
+	}
+
+	var csvString = csvRows.join("\r\n");
+	csv.href = 'data:attachment/csv,' +  encodeURIComponent(csvString);
+	csv.target = '_blank';
+	
+	csv.download = "invoice" + name.value + invoiceNumber.value + ".csv";
+});
+
+
 
 
 
@@ -59,7 +109,6 @@ var setFromLocal = function(el) {
 	
 	// LOCAL STORAGE
 	for (var ii = 0; ii < el.length; ii++) {
-		//invoiceInput[ii].marker = ii;
 		
 		// IF DATA IN STORAGE THEN LOAD FROM STORAGE ELSE NOTHING
 		if(typeof(Storage) !== "undefined") {
@@ -71,18 +120,18 @@ var setFromLocal = function(el) {
 };
 
 
-/* INPUT LISTENER FOR CALCULATING AND PRINTING TOTALS */
+/* BLUR LISTENER FOR CALCULATING AND PRINTING TOTALS */
 var addInputListener = function(el) {
 	el.addEventListener("blur", function (){
 		if (isNaN(this.value) || this.value < 0) {
 			// ERROR FOR iNCORRECT INPUT
-			alert("This input takes minutes in positive numerical values.  Example: 3 or 42 or 420 or 3.14 ");
+			alert(minuteWarning);
 		}
 		calkulator();
 	});
 };
 
-
+/* SET ITEM AMOUNT VALUE */
 var figureItemAmount = function(el) {
 	el.addEventListener("input", function (){
 
@@ -96,6 +145,7 @@ var figureItemAmount = function(el) {
 	});
 };
 
+/* REFIGURE TOTAL AMOUNT */
 var figureItemAmountForRate = function(el) {
 	el.addEventListener("blur", function (){
 		var amownt = (this.value / 60) * itemMinutes[this.getAttribute("id")[8]].value;
@@ -122,7 +172,7 @@ var addBlurListener = function(el) {
 		if (idee === "baseRate") {
 			if (isNaN(this.value) || this.value < 0) {
 				/* ERROR FOR iNCORRECT INPUT */
-				alert("This input takes dollars per hour in positive numerical values.  Example: 3 or 42 or 420 or 3.14 ");
+				alert(baseRateWarning);
 				this.value = "";
 			}
 		}
@@ -130,12 +180,12 @@ var addBlurListener = function(el) {
 		/* WARNING MESSAGE FOR EMPTY HOURLY RATE */
 		if (idee === "itemMinutes") {
 			if (baseRate.value === "" || baseRate.value === null) {
-				alert("This App can't do any calculations until you enter your hourly rate above.  Just numerical digits please.  Example: 3 or 42 or 420 or 3.14");
+				alert(baserRateReminder);
 			}
 			
 			if (isNaN(this.value) || this.value < 0) {
 				/* ERROR FOR iNCORRECT INPUT */
-				alert("This input takes dollars per hour in positive numerical values.  Example: 3 or 42 or 420 or 3.14 ");
+				alert(baseRateWarning);
 				this.value = "";
 			}
 		}
@@ -154,15 +204,14 @@ for (var i = 0; i < yourInfoInput.length; i++) {
 // SET/PULL TOTALS AND NOTES INTO/OUT OF LOCAL STORAGE
 addBlurListener(invoiceInput2[0]);
 
-// invoiceInput2[0].addEventListener("blur", function() {	
-
 
 /* HELPER FUNCTION FOR CREATING ELEMENTS */
-var makeElement = function(el, klass, id, tipe, autoComp) {
+var makeElement = function(el, klass, id, tipe, name, autoComp) {
 	var elem = document.createElement(el);
 	elem.setAttribute("class", klass);
 	elem.setAttribute("id", id);
 	elem.setAttribute("type", tipe);
+	elem.setAttribute("name", name);
 	elem.setAttribute("autocomplete", autoComp);
 	return elem;
 };
@@ -174,22 +223,21 @@ var makeRows = function() {
 	for (var tdip = 1; tdip < 7; tdip++) {
 		var td = makeElement("td");
 		if (tdip === 1) {
-			ip = makeElement("input", "invoiceInput", "itemDate", "text", "off");
+			ip = makeElement("input", "invoiceInput", "itemDate", "text", "date", "off");
 		} else if (tdip === 2) {
-			ip = makeElement("input", "invoiceInput itemServiceType", "itemServiceType", "text", "off");
+			ip = makeElement("input", "invoiceInput itemServiceType", "itemServiceType", "text", "service_type", "off");
 		} else if (tdip === 3) {
-			ip = makeElement("textarea", "invoiceInput itemDescription", "itemDescription", "off");	
+			ip = makeElement("textarea", "invoiceInput itemDescription", "itemDescription", "text", "description", "off");	
 		} else if (tdip === 4) {
-			ip = makeElement("input", "invoiceInput itemMinutes", "itemMinutes", "text", "off");
+			ip = makeElement("input", "invoiceInput itemMinutes", "itemMinutes", "text", "minutes", "off");
 			addInputListener(ip);
 			figureItemAmount(ip);
 		} else if (tdip === 5) {
-			ip = makeElement("input", "invoiceInput itemRate", "itemRate", "text", "off");
-			//ip.setAttribute("placeholder", baseRate.value);
+			ip = makeElement("input", "invoiceInput itemRate", "itemRate", "text", "rate", "off");
 			ip.setAttribute("value", baseRate.value);
 			figureItemAmountForRate(ip);
 		} else if (tdip === 6) {
-			ip = makeElement("input", "invoiceInput itemAmount", "itemAmount", "text", "off");
+			ip = makeElement("input", "invoiceInput itemAmount", "itemAmount", "text", "amount", "off");
 			ip.disabled = true;
 		}
 		addBlurListener(ip);
@@ -366,7 +414,7 @@ window.onload = function() {
 		// LOAD SAVED NOTES IF THERE BE ANY, ARRRGH!  (HA! JUST THOUGHT I'D BE A PIRATE FOR A MINUTE.  :)  )
 		invoiceInput2[0].value = localStorage.getItem(invoiceInput2[0].getAttribute("id"));
 	} else {
-		alert("This invoice uses local storage to save your entires into this form until you hit clear.  You don't seem to have local storage, so some aspects of this App my not function properly and your data will not be saved.");
+		alert(loStoReminder);
 		totalAmount.value = "$";
 		totalTime.value = "hour(s)";
 	}
@@ -382,7 +430,7 @@ window.onload = function() {
 var makeSomeRowsYo = function() {
 	if (rows.value < 1 || rows.value > 42 || isNaN(rows.value)) {
 		// ERROR FOR iNCORRECT INPUT
-		alert("Please replace the '#' with a number between 1 and 42, then try again.");
+		alert(rowInputReminder);
 	} else {
 		newRow.disabled = true;
 		rows.disabled = true;
@@ -398,7 +446,6 @@ var makeSomeRowsYo = function() {
 	changeId();
 	if (baseRate.value !== "" || baseRate.value !== null) {
 		for (var i = 0; i < itemMinutes.length; i++) {
-			//itemRate[i].value = baseRate.value;
 			itemRate[i].blur = true;
 			localStorage.setItem(itemRate[i].getAttribute("id"), itemRate[i].value);
 		}

@@ -71,12 +71,36 @@ header a:hover {
 
 .clearAll,
 .newRow,
-.oneMore {
+.oneMore,
+.csv {
 	margin: 10px auto;
 	padding-left: 10px;
 	padding-right: 10px;
 	background: rgba(75,175,80,0.2);
 	border: 2px solid rgb(75,175,80);
+}
+
+.csv {
+	font-family: 'Roboto', sans-serif;
+	color: rgba(50,50,50,0.6);
+	font-size: 0.9em;
+	font-weight: bold;
+	display: inline-block;
+	vertical-align: top;
+	/* margin-top: 11px; */
+	margin-right: 10px;
+	padding-top: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	cursor: pointer;
+	border-radius: 3px;
+	height: 34px;
+	float: right;
+	
+}
+
+.csv:hover {
+	box-shadow: 8px 8px 4px rgba(50,50,50,0.5);
 }
 
 .newRow {
@@ -88,6 +112,7 @@ header a:hover {
 	font-size: .88em;
 	float: right;
 	width: 90px;
+	/* clear: both; */
 }
 
 

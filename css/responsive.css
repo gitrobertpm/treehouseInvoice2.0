@@ -91,6 +91,15 @@
 		width: 100px;
 	}
 	
+	.csv {
+		text-align: center;
+		font-size: 1em;
+		height: 36px;
+		padding-left: 20px;
+		padding-right: 20px;
+		width: 187px;
+	}
+	
 	.invoButton {
 		box-shadow: 5px 5px 5px rgba(50,50,50,0.3);
 	}

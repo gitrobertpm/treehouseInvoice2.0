@@ -48,13 +48,13 @@
 			<div class="infoWrap billInfoWrap">
 			
 				<label class="infoTitle" for="invoiceNumber">Invoice #: <!-- <span class="symbol hashtag">#</span> --></label>
-				<input type="text" name="invoiceNumber" id="invoiceNumber" class="yourInfoInput" autocomplete="off"><br>
+				<input type="text" name="invoice#" id="invoiceNumber" class="yourInfoInput" autocomplete="off"><br>
 			
 				<label class="infoTitle" for="period">Date<span class="parens">(</span>s<span class="parens">)</span>:</label>
-				<input type="text" name="period" id="period" class="yourInfoInput" autocomplete="off"><br>
+				<input type="text" name="pay_period" id="period" class="yourInfoInput" autocomplete="off"><br>
 				
 				<label class="infoTitle" for="baseRate" >Base Rate: <span class="symbol dollar">$</span></label>
-				<input type="text" name="baseRate" id="baseRate" class="yourInfoInput" autocomplete="on"><br>
+				<input type="text" name="base_rate" id="baseRate" class="yourInfoInput" autocomplete="on"><br>
 				
 				<!-- <label class="infoTitle" for="hours">Total Time:</label>
 				<input type="text" name="hours" id="hours" class="yourInfoInput" autocomplete="off"><br>
@@ -80,7 +80,9 @@
 		<div class="buttonWrap">
 			<button class="newRow invoButton" id="newRow">Create Rows &#10095;</button>
 			<input type="text" name="rows" id="rows" class="rowsInput" placeholder="Row #" autocomplete="off">
+			
 			<button class="clearAll invoButton" id="clearAll">Clear All</button>
+			<a href="#" class="invoButton csv" id="csv">Downlaod CSV</a>
 		</div>
 		
 		<div class="warningWrap" id="warningWrap">

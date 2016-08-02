@@ -3,7 +3,7 @@
 		margin-top: 0px;
 	}
 	
-	button, .dueDate, .buttonWrap, .invoicePrintHide, footer {
+	button, .dueDate, .buttonWrap, .invoicePrintHide, .csv, footer {
 		display: none;
 	}
 	
