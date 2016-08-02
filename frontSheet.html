@@ -7,7 +7,11 @@
 	<link rel="shortcut icon" type="image/x-icon" href="img/dollarSign.ico" />
 	<link href='https://fonts.googleapis.com/css?family=Fredoka+One|Roboto:300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/normalize.css">
-	<link rel="stylesheet" href="css/invoice.css">
+	<link rel="stylesheet" href="css/myResets.css">
+	<link rel="stylesheet" href="css/components.css">
+	<link rel="stylesheet" href="css/invoicer.css">
+	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="css/print.css">
 </head>
 <body>
 	<header>
@@ -28,7 +32,10 @@
 				<input type="text" name="name" id="name" class="yourInfoInput" autocomplete="on"><br>
 				
 				<label class="infoTitle" for="address">Address:</label>
-				<input type="text" name="name" id="address" class="yourInfoInput" autocomplete="on"><br>
+				<input type="text" name="address" id="address" class="yourInfoInput" autocomplete="on"><br>
+				
+				<!-- <label class="infoTitle" for="citySateZip">City, State, Zip:</label>
+				<input type="text" name="name" id="address" class="yourInfoInput" autocomplete="on"><br> -->
 				
 				<label class="infoTitle" for="phone">Phone:</label>
 				<input type="text" name="phone" id="phone" class="yourInfoInput" autocomplete="on"><br>
@@ -38,17 +45,32 @@
 			</div>
 			<div class="infoWrap billInfoWrap">
 			
-				<label class="infoTitle" for="periodFS">Pay Period:</label>
-				<input type="text" name="period" id="periodFS" class="yourInfoInput" autocomplete="off"><br>
+				<label class="infoTitle" for="invoiceNumber">Invoice #: <!-- <span class="symbol hashtag">#</span> --></label>
+				<input type="text" name="invoiceNumber" id="invoiceNumber" class="yourInfoInput" autocomplete="off"><br>
+			
+				<label class="infoTitle" for="period">Date<span class="parens">(</span>s<span class="parens">)</span>:</label>
+				<input type="text" name="period" id="period" class="yourInfoInput" autocomplete="off"><br>
 				
-				<label class="infoTitle" for="rate" id="rateLabel">Hourly Rate:</label>
-				<input type="text" name="rate" id="rate" class="yourInfoInput" autocomplete="on"><br>
+				<label class="infoTitle" for="baseRate" >Base Rate: <span class="symbol dollar">$</span></label>
+				<input type="text" name="baseRate" id="baseRate" class="yourInfoInput" autocomplete="on"><br>
 				
-				<label class="infoTitle" for="hoursFS">Total Time:</label>
-				<input type="text" name="hours" id="hoursFS" class="yourInfoInput" autocomplete="off"><br>
+				<!-- <label class="infoTitle" for="hours">Total Time:</label>
+				<input type="text" name="hours" id="hours" class="yourInfoInput" autocomplete="off"><br>
 				
-				<label class="infoTitle" for="dueFS">Total Due:</label>
-				<input type="text" name="due" id="dueFS" class="yourInfoInput" autocomplete="off"><br>
+				<label class="infoTitle" for="due">Total Due:</label>
+				<input type="text" name="due" id="due" class="yourInfoInput" autocomplete="off"><br>	 -->
+				<p class="dueDate">Please forward each invoice on the 15 of every month for approval</p>
+			</div>
+		</div>
+		
+		<div class="mainInfoWrap">
+			<div class="infoWrap personalInfoWrap">
+				<label class="infoTitle toAndFor" for="to">To:</label>
+				<textarea name="to" id="to" class="yourInfoInput toAndForInput" autocomplete="on" placeHolder="Nancy King:          nancy.king@teamtreehouse.com"></textarea> <br>		
+			</div>
+			<div class="infoWrap billInfoWrap">
+				<label class="infoTitle toAndFor" for="for">For:</label>
+				<textarea name="for" id="for" class="yourInfoInput toAndForInput" autocomplete="off" placeHolder="Techdegree Services"></textarea> <br>
 			</div>
 		</div>
 		
@@ -93,18 +115,18 @@
 		<table class="totalNotesTable">
 			<thead>
 				<tr>
+					<th>Notes</th>
 					<th>Total Time</th>
 					<th>Total Due</th>
-					<th>Notes</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td><input type="text" name="date" id="invoiceInputTimeFS" class="invoiceInput2" disabled="true"></td>
-					<td><input type="text" name="project" id="invoiceInputDueFS" class="invoiceInput2" disabled="true"></td>
 					<td>
 						<textarea rows="1" cols="50" id="notesFS" class="invoiceInput2 invoiceNotes"></textarea> 
 					</td>
+					<td><input type="text" name="date" id="invoiceInputTimeFS" class="invoiceInput2" disabled="true"></td>
+					<td><input type="text" name="project" id="invoiceInputDueFS" class="invoiceInput2" disabled="true"></td>
 				</tr>
 			</tbody>
 		</table>

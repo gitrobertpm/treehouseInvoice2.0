@@ -8,8 +8,8 @@
 "use strict";
 
 //////////////////////// FRONT SHEET SPECIFIC
-var hoursFS = document.getElementById("hoursFS");
-var dueFS = document.getElementById("dueFS");
+//var hoursFS = document.getElementById("hoursFS");
+//var dueFS = document.getElementById("dueFS");
 var newRowFS = document.getElementById("newRowFS");
 var rowsFS = document.getElementById("rowsFS");
 var oneMoreFS = document.getElementById("oneMoreFS");
@@ -19,7 +19,7 @@ var invoiceInputTimeFS = document.getElementById("invoiceInputTimeFS");
 var invoiceInputDueFS = document.getElementById("invoiceInputDueFS");
 /////////////////////////////////////////////
  
-var rate = document.getElementById("rate");
+var baseRate = document.getElementById("baseRate");
 var yourInfoInput = document.getElementsByClassName("yourInfoInput");
 var invoiceBody = document.getElementById("invoiceBody");
 var invoiceRow = document.getElementsByClassName("invoiceRow");
@@ -57,15 +57,15 @@ window.onload = function() {
 			invoiceInputDueFS.value = "$\u00A0" + localStorage.getItem("totalDueFS");
 			invoiceInputTimeFS.value = localStorage.getItem("totalTimeFS") + "\u00A0hours";
 			
-			dueFS.value = "$\u00A0" + localStorage.getItem("totalDueFS");
-			hoursFS.value = localStorage.getItem("totalTimeFS") + "\u00A0hours";
+			//dueFS.value = "$\u00A0" + localStorage.getItem("totalDueFS");
+			//hoursFS.value = localStorage.getItem("totalTimeFS") + "\u00A0hours";
 			
 		} else {
 			invoiceInputDueFS.value = "$";
 			invoiceInputTimeFS.value = "hour(s)";
 			
-			dueFS.value = "$";
-			hoursFS.value = "hours";
+			//dueFS.value = "$";
+			//hoursFS.value = "hours";
 		}
 		
 		// CHANGE ID AND RESAVE TO LOCAL STORAGE IF OPENING OLD DATA FROM LOCAL STORAGE
@@ -81,7 +81,7 @@ window.onload = function() {
 		}
 		
 		// LOAD SAVED NOTES IF THERE BE ANY, ARRRGH!  (HA! JUST THOUGHT I'D BE A PIRATE FOR A MINUTE.  :)  )
-		invoiceInput2[2].value = localStorage.getItem(invoiceInput2[2].getAttribute("id"));
+		invoiceInput2[0].value = localStorage.getItem(invoiceInput2[0].getAttribute("id"));
 	} else {
 		alert("This invoice uses local storage to save your entires into this form until you hit clear.  You don't seem to have local storage, so some aspects of this App my not function properly and your data will not be saved.");
 		invoiceInputDueFS.value = "$";
@@ -113,11 +113,11 @@ for (var i = 0; i < yourInfoInput.length; i++) {
 		var val = yourInfoInput[this.marker].value;
 		
 		// ERROR MESSAGE FOR INCORECT INPUT FOR HOURLY RATE
-		if (yourInfoInput[this.marker].getAttribute("id") === "rate") {
+		if (yourInfoInput[this.marker].getAttribute("id") === "baseRate") {
 			if (isNaN(this.value) || this.value < 0) {
 				// ERROR FOR iNCORRECT INPUT
 				alert("This input takes dollars per hour in positive numerical values.  Example: 3 or 42 or 420 or 3.14 ");
-				rate.value = "";
+				baseRate.value = "";
 			}
 		}
 		
@@ -183,7 +183,7 @@ var saveToLocal = function() {
 			var idee = invoiceInput[this.marker].getAttribute("id");
 			var val = invoiceInput[this.marker].value;
 			
-			if (rate.value === "" || rate.value === null) {
+			if (baseRate.value === "" || baseRate.value === null) {
 				alert("This App can't do any calculations until you enter your hourly rate above.  Just numerical digits please.  Example: 3 or 42 or 420 or 3.14");
 			}
 			
@@ -223,7 +223,7 @@ var calkulator = function() {
 
 				// PRINT TOTAL
 				invoiceInputDueFS.value = "$\u00A0" + Number(roundTotal);
-				dueFS.value = "$\u00A0" + Number(roundTotal);
+				//dueFS.value = "$\u00A0" + Number(roundTotal);
 				
 				// STORE DATA
 				if(typeof(Storage) !== "undefined") {
@@ -257,7 +257,7 @@ var calkulator2 = function() {
 				
 				// PRINT TOTAL
 				invoiceInputTimeFS.value = roundTotal + "\u00A0hours";
-				hoursFS.value = roundTotal + "\u00A0hours";
+				//hoursFS.value = roundTotal + "\u00A0hours";
 				
 				// STORE DATA
 				if(typeof(Storage) !== "undefined") {
@@ -372,9 +372,9 @@ rowsFS.addEventListener("focus", function() {
 
 
 // SET/PULL TOTALS AND NOTES INTO/OUT OF LOCAL STORAGE
-invoiceInput2[2].addEventListener("blur", function() {	
-	var idee = invoiceInput2[2].getAttribute("id");
-	var val = invoiceInput2[2].value;
+invoiceInput2[0].addEventListener("blur", function() {	
+	var idee = invoiceInput2[0].getAttribute("id");
+	var val = invoiceInput2[0].value;
 	
 	if(typeof(Storage) !== "undefined") {
 	    localStorage.setItem(idee, val);
@@ -410,7 +410,7 @@ trueClearFS.onclick = function() {
 		localStorage.removeItem("totalDueFS");
 		localStorage.removeItem("totalTimeFS");
 		
-		var idee2 = invoiceInput2[2].getAttribute("id");
+		var idee2 = invoiceInput2[0].getAttribute("id");
 		localStorage.removeItem(idee2);
 		
 		for(var remi = 0; remi < invoiceInput.length; remi++) {
