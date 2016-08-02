@@ -21,6 +21,46 @@
 		float: right;
 	}
 	
+	.siteMapSvgPath {
+		stroke-dasharray: 550;
+		stroke-dashoffset: 550;
+		-webkit-animation: psOffset 2s ease-out forwards;animation: psOffset 2s ease-out forwards;
+	}
+	
+	@-webkit-keyframes psOffset {
+		100% {
+			stroke-dashoffset: 0;
+		}
+	}
+	@keyframes psOffset {
+		100% {
+			stroke-dashoffset: 0;
+		}
+	}
+	
+	.siteMapSvgPath {
+		
+	}
+	
+	header:hover > .headerInnerWrap > .siteMapSVG > .siteMapSvgPath {
+		stroke-dasharray: 550;
+		stroke-dashoffset: 550;
+
+		-webkit-animation: psOffset2 2s ease-out forwards;animation: psOffset2 2s ease-out forwards;
+	}
+	
+	@-webkit-keyframes psOffset2 {
+		100% {
+			stroke-dashoffset: 0;
+		}
+	}
+	@keyframes psOffset2 {
+		100% {
+			stroke-dashoffset: 0;
+		}
+	}
+	
+	
 	.mainInfoWrap {
 		border: 1px solid rgba(150,150,150,0.2);
 		box-shadow: 5px 5px 5px rgba(50,50,50,0.3);
